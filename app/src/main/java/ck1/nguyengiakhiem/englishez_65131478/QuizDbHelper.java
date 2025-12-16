@@ -7,53 +7,83 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public abstract class QuizDbHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "EnglishQuiz.db";
-    private static final int DATABASE_VERSION = 1;
+public class QuizDbHelper extends SQLiteOpenHelper {
+
+    private static final String DB_NAME = "Quiz.db";
+    private static final int DB_VERSION = 1;
 
     public QuizDbHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, DB_NAME, null, DB_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        final String SQL_CREATE_QUESTIONS_TABLE = "CREATE TABLE questions (" +
-                "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "question TEXT, option1 TEXT, option2 TEXT, " +
-                "option3 TEXT, option4 TEXT, answer_nr INTEGER)";
-        db.execSQL(SQL_CREATE_QUESTIONS_TABLE);
-        fillQuestionsTable(db); // Thêm dữ liệu mẫu
+        db.execSQL(
+                "CREATE TABLE questions (" +
+                        "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "question TEXT," +
+                        "a TEXT," +
+                        "b TEXT," +
+                        "c TEXT," +
+                        "d TEXT," +
+                        "answer INTEGER)"
+        );
+
+        insertQuestions(db);
     }
 
-    private void fillQuestionsTable(SQLiteDatabase db) {
-        Question q1 = new Question("What is the past tense of 'Go'?", "Goed", "Went", "Gone", "Going", 2);
-        addQuestion(db, q1);
-        // Thêm nhiều câu hỏi khác ở đây...
+    private void insertQuestions(SQLiteDatabase db) {
+        addQuestion(db, new Question(
+                "What is the capital of England?",
+                "Paris", "London", "Rome", "Berlin", 2
+        ));
+
+        addQuestion(db, new Question(
+                "She ___ to school every day.",
+                "go", "goes", "going", "gone", 2
+        ));
+
+        // 👉 Thêm tiếp đến 100 câu ở đây
     }
 
-    private void addQuestion(SQLiteDatabase db, Question question) {
+    private void addQuestion(SQLiteDatabase db, Question q) {
         ContentValues cv = new ContentValues();
-        cv.put("question", question.getQuestion()); // Bây giờ getQuestion() đã hoạt động
-        cv.put("option1", question.getOption1());
-        cv.put("option2", question.getOption2());
-        cv.put("option3", question.getOption3());
-        cv.put("option4", question.getOption4());
-        cv.put("answer_nr", question.getAnswerNr());
+        cv.put("question", q.getQuestion());
+        cv.put("a", q.getOptionA());
+        cv.put("b", q.getOptionB());
+        cv.put("c", q.getOptionC());
+        cv.put("d", q.getOptionD());
+        cv.put("answer", q.getCorrectAnswer());
         db.insert("questions", null, cv);
     }
 
-    public List<Question> getAllQuestions() {
-        List<Question> questionList = new ArrayList<>();
+    public ArrayList<Question> getAllQuestions() {
+        ArrayList<Question> list = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery("SELECT * FROM questions", null);
+
         if (c.moveToFirst()) {
             do {
-                // Đọc dữ liệu từ Cursor và add vào list
+                Question q = new Question(
+                        c.getString(1),
+                        c.getString(2),
+                        c.getString(3),
+                        c.getString(4),
+                        c.getString(5),
+                        c.getInt(6)
+                );
+                list.add(q);
             } while (c.moveToNext());
         }
+
         c.close();
-        return questionList;
+        return list;
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS questions");
+        onCreate(db);
     }
 }
