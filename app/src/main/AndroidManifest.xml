@@ -23,6 +23,7 @@
         <activity android:name=".HistoryActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".QuizActivity" />
+        <activity android:name=".ResultActivity" />
     </application>
 
 </manifest>

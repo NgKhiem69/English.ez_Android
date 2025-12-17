@@ -1,80 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:background="#F5F5F5">
+    android:background="@drawable/background_quiz">
 
-    <!-- QUESTION NUMBER -->
-    <TextView
-        android:id="@+id/tv_question_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Question 1 / 100"
-        android:textSize="16sp"
-        android:textColor="#666666"
-        android:layout_marginBottom="10dp" />
+    <!-- PATTERN BACKGROUND -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/vector"
+        android:alpha="0.8" />
 
-    <!-- QUESTION TEXT -->
-    <TextView
-        android:id="@+id/tv_question"
+    <!-- ================= HEADER ================= -->
+    <LinearLayout
+        android:id="@+id/headerContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="What is the capital of England?"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#000000"
-        android:layout_marginBottom="20dp" />
+        android:orientation="vertical"
+        android:layout_marginTop="40dp">
 
-    <!-- ANSWERS -->
-    <RadioGroup
-        android:id="@+id/radioGroupAnswers"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Time: 75:00"
+            android:textColor="#FF5252"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-        <RadioButton
-            android:id="@+id/rb_a"
+        <TextView
+            android:id="@+id/tv_question_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Question 1 / 100"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardQuestion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="A. Paris"
-            android:textSize="18sp"
-            android:padding="10dp" />
+            android:layout_margin="20dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="10dp">
 
-        <RadioButton
-            android:id="@+id/rb_b"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="B. London"
-            android:textSize="18sp"
-            android:padding="10dp" />
+            <TextView
+                android:id="@+id/tv_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="25dp"
+                android:text="Nội dung câu hỏi tiếng Anh sẽ hiển thị ở đây?"
+                android:textColor="#333333"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
 
-        <RadioButton
-            android:id="@+id/rb_c"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="C. Rome"
-            android:textSize="18sp"
-            android:padding="10dp" />
-
-        <RadioButton
-            android:id="@+id/rb_d"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="D. Berlin"
-            android:textSize="18sp"
-            android:padding="10dp" />
-    </RadioGroup>
-
-    <!-- NEXT BUTTON -->
-    <Button
-        android:id="@+id/btn_next"
+    <!-- ================= CONTENT ================= -->
+    <LinearLayout
+        android:id="@+id/contentContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Next"
-        android:textSize="18sp"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="#9C27B0"
-        android:textColor="#FFFFFF" />
+        android:layout_below="@id/headerContainer"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-</LinearLayout>
+        <!-- OPTION A -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_rb_a"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="6dp">
+
+            <TextView
+                android:id="@+id/tv_a"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:text="A. Option A"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- OPTION B -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_rb_b"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="6dp">
+
+            <TextView
+                android:id="@+id/tv_b"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:text="B. Option B"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- OPTION C -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_rb_c"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="6dp">
+
+            <TextView
+                android:id="@+id/tv_c"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:text="C. Option C"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- OPTION D -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_rb_d"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="6dp">
+
+            <TextView
+                android:id="@+id/tv_d"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:text="D. Option D"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- BUTTONS -->
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:backgroundTint="#86FF7E"
+            android:text="XÁC NHẬN"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_prev"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#BDBDBD"
+            android:text="QUAY LẠI"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</RelativeLayout>
