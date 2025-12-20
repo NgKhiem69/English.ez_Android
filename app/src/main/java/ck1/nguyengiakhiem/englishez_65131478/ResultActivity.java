@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ResultActivity extends AppCompatActivity {
 
+    TextView tvTimeUsed;
     TextView tvScore, tvResult, tvStatus;
     Button btnRetry, btnHome;
 
@@ -20,22 +21,27 @@ public class ResultActivity extends AppCompatActivity {
         tvScore = findViewById(R.id.tv_score);
         tvResult = findViewById(R.id.tv_result);
         tvStatus = findViewById(R.id.tv_status);
+        tvTimeUsed = findViewById(R.id.tv_time_used);
         btnRetry = findViewById(R.id.btn_retry);
         btnHome = findViewById(R.id.btn_home);
 
         int score = getIntent().getIntExtra("score", 0);
         int total = getIntent().getIntExtra("total", 0);
-
         int percent = (int) ((score * 100.0f) / total);
 
         tvScore.setText(score + " / " + total);
         tvResult.setText("Score: " + percent + "%");
 
+        String timeUsed = getIntent().getStringExtra("time_used");
+        if (timeUsed != null) {
+            tvTimeUsed.setText("Time used: " + timeUsed);
+        }
+
         if (percent >= 50) {
-            tvStatus.setText("PASSED ");
+            tvStatus.setText("PASSED");
             tvStatus.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
         } else {
-            tvStatus.setText("FAILED ");
+            tvStatus.setText("FAILED");
             tvStatus.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
         }
 

@@ -182,7 +182,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="QUIT"
-                    android:textColor="#9C27B0"
+                    android:textColor="#FFFF"
                     android:textSize="20sp"
                     android:textStyle="bold" />
             </RelativeLayout>
