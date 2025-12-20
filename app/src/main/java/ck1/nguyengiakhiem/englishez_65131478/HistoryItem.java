@@ -2,37 +2,36 @@ package ck1.nguyengiakhiem.englishez_65131478;
 
 public class HistoryItem {
 
-    private int score;
-    private int total;
-    private int percent;
-    private String time;
-    private String date;
+    int score, total, percent;
+    String totalTime;
+    String usedTime;
+    String difficulty;
+    String date;
 
-    public HistoryItem(int score, int total, int percent, String time, String date) {
+    public HistoryItem(
+            int score,
+            int total,
+            int percent,
+            String totalTime,
+            String usedTime,
+            String difficulty,
+            String date
+    ) {
         this.score = score;
         this.total = total;
         this.percent = percent;
-        this.time = time;
+        this.totalTime = totalTime;
+        this.usedTime = usedTime;
+        this.difficulty = difficulty;
         this.date = date;
     }
 
-    public int getScore() {
-        return score;
-    }
-
-    public int getTotal() {
-        return total;
-    }
-
-    public int getPercent() {
-        return percent;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public String getDate() {
-        return date;
-    }
+    public int getScore() { return score; }
+    public int getTotal() { return total; }
+    public int getPercent() { return percent; }
+    public String getTotalTime() { return totalTime; }
+    public String getUsedTime() { return usedTime; }
+    public String getDifficulty() { return difficulty; }
+    public String getDate() { return date; }
 }
+

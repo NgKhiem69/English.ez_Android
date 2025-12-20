@@ -47,10 +47,16 @@ public class HistoryAdapter extends BaseAdapter {
         TextView tvDate = view.findViewById(R.id.tv_date);
         TextView tvScore = view.findViewById(R.id.tv_score);
         TextView tvPercent = view.findViewById(R.id.tv_percent);
+        TextView tvDifficulty = view.findViewById(R.id.tv_difficulty);
 
         tvDate.setText(item.getDate());
         tvScore.setText("Score: " + item.getScore() + " / " + item.getTotal());
-        tvPercent.setText("Time: 75:00 → " + item.getTime());
+        tvPercent.setText(
+                "Time: " + item.getTotalTime() + " / " + item.getUsedTime()
+        );
+        tvDifficulty.setText(
+                "Difficulty: " + item.getDifficulty().toUpperCase()
+        );
 
         return view;
     }

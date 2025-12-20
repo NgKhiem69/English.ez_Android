@@ -1,0 +1,274 @@
+{
+  "questions": [
+    {
+      "question": "She ___ to work by bus every day.",
+      "a": "go",
+      "b": "goes",
+      "c": "going",
+      "d": "gone",
+      "answer": 2,
+      "difficulty": "easy"
+    },
+    {
+      "question": "The meeting will start ___ 9 a.m.",
+      "a": "in",
+      "b": "on",
+      "c": "at",
+      "d": "for",
+      "answer": 3,
+      "difficulty": "easy"
+    },
+    {
+      "question": "Please ___ the attached form.",
+      "a": "complete",
+      "b": "completing",
+      "c": "completed",
+      "d": "completion",
+      "answer": 1,
+      "difficulty": "easy"
+    },
+    {
+      "question": "Mr. Lee is responsible ___ sales.",
+      "a": "for",
+      "b": "with",
+      "c": "to",
+      "d": "at",
+      "answer": 1,
+      "difficulty": "easy"
+    },
+    {
+      "question": "This report is ___ than the last one.",
+      "a": "more accurate",
+      "b": "most accurate",
+      "c": "accurately",
+      "d": "accuracy",
+      "answer": 1,
+      "difficulty": "easy"
+    },
+    {
+      "question": "Employees must wear ID badges ___ all times.",
+      "a": "in",
+      "b": "on",
+      "c": "at",
+      "d": "for",
+      "answer": 3,
+      "difficulty": "easy"
+    },
+    {
+      "question": "The office will be closed ___ Sunday.",
+      "a": "in",
+      "b": "on",
+      "c": "at",
+      "d": "by",
+      "answer": 2,
+      "difficulty": "easy"
+    },
+    {
+      "question": "Please submit the report ___ Friday.",
+      "a": "until",
+      "b": "during",
+      "c": "by",
+      "d": "since",
+      "answer": 3,
+      "difficulty": "easy"
+    },
+    {
+      "question": "The new policy applies ___ all employees.",
+      "a": "to",
+      "b": "with",
+      "c": "for",
+      "d": "by",
+      "answer": 1,
+      "difficulty": "easy"
+    },
+    {
+      "question": "She is responsible ___ managing the team.",
+      "a": "to",
+      "b": "with",
+      "c": "for",
+      "d": "at",
+      "answer": 3,
+      "difficulty": "easy"
+    },
+    {
+      "question": "The manager requested that all reports ___ submitted by Friday.",
+      "a": "are",
+      "b": "be",
+      "c": "being",
+      "d": "been",
+      "answer": 2,
+      "difficulty": "medium"
+    },
+    {
+      "question": "Employees are encouraged to attend the training session ___ their schedule allows.",
+      "a": "unless",
+      "b": "although",
+      "c": "if",
+      "d": "because",
+      "answer": 3,
+      "difficulty": "medium"
+    },
+    {
+      "question": "The conference room was reserved ___ the entire afternoon.",
+      "a": "for",
+      "b": "during",
+      "c": "since",
+      "d": "until",
+      "answer": 1,
+      "difficulty": "medium"
+    },
+    {
+      "question": "Ms. Taylor has been working at the company ___ 2019.",
+      "a": "for",
+      "b": "during",
+      "c": "since",
+      "d": "until",
+      "answer": 3,
+      "difficulty": "medium"
+    },
+    {
+      "question": "The brochure provides detailed information ___ the new product line.",
+      "a": "with",
+      "b": "about",
+      "c": "for",
+      "d": "to",
+      "answer": 2,
+      "difficulty": "medium"
+    },
+    {
+      "question": "The CEO announced that profits had increased ___ last year.",
+      "a": "compare",
+      "b": "comparing",
+      "c": "comparison",
+      "d": "compared to",
+      "answer": 4,
+      "difficulty": "medium"
+    },
+    {
+      "question": "All applicants must submit their resumes ___ the deadline.",
+      "a": "until",
+      "b": "by",
+      "c": "during",
+      "d": "from",
+      "answer": 2,
+      "difficulty": "medium"
+    },
+    {
+      "question": "The report was rejected because it was not ___ prepared.",
+      "a": "accuracy",
+      "b": "accurate",
+      "c": "accurately",
+      "d": "accuracyly",
+      "answer": 3,
+      "difficulty": "medium"
+    },
+    {
+      "question": "The marketing team is responsible ___ developing advertising strategies.",
+      "a": "for",
+      "b": "with",
+      "c": "to",
+      "d": "at",
+      "answer": 1,
+      "difficulty": "medium"
+    },
+    {
+      "question": "Please contact the HR department ___ you have any questions.",
+      "a": "unless",
+      "b": "although",
+      "c": "if",
+      "d": "while",
+      "answer": 3,
+      "difficulty": "medium"
+    },
+    {
+      "question": "The shipment arrived later than ___ expected.",
+      "a": "initial",
+      "b": "initially",
+      "c": "initializing",
+      "d": "initialed",
+      "answer": 2,
+      "difficulty": "medium"
+    },
+    {
+      "question": "The assistant will arrange the meeting ___ the director’s availability.",
+      "a": "according to",
+      "b": "because of",
+      "c": "instead of",
+      "d": "in spite of",
+      "answer": 1,
+      "difficulty": "medium"
+    },
+    {
+      "question": "The proposal was approved ___ its high projected revenue.",
+      "a": "because",
+      "b": "despite",
+      "c": "due to",
+      "d": "although",
+      "answer": 3,
+      "difficulty": "medium"
+    },
+    {
+      "question": "Customers are advised to read the instructions ___ using the device.",
+      "a": "before",
+      "b": "during",
+      "c": "after",
+      "d": "while",
+      "answer": 1,
+      "difficulty": "medium"
+    },
+    {
+      "question": "The presentation was postponed ___ the speaker was unavailable.",
+      "a": "so",
+      "b": "although",
+      "c": "because",
+      "d": "unless",
+      "answer": 3,
+      "difficulty": "medium"
+    },
+    {
+      "question": "The office will remain closed ___ further notice.",
+      "a": "until",
+      "b": "by",
+      "c": "during",
+      "d": "from",
+      "answer": 1,
+      "difficulty": "medium"
+    },
+    {
+      "question": "The company plans to expand its operations ___ Asia next year.",
+      "a": "to",
+      "b": "in",
+      "c": "at",
+      "d": "on",
+      "answer": 2,
+      "difficulty": "medium"
+    },
+    {
+      "question": "Employees must comply ___ the company’s safety regulations.",
+      "a": "to",
+      "b": "with",
+      "c": "for",
+      "d": "at",
+      "answer": 2,
+      "difficulty": "medium"
+    },
+    {
+      "question": "The accountant verified the figures to ensure they were ___.",
+      "a": "correct",
+      "b": "correctly",
+      "c": "correctness",
+      "d": "correction",
+      "answer": 1,
+      "difficulty": "medium"
+    },
+    {
+      "question": "The new software update will improve system ___ significantly.",
+      "a": "perform",
+      "b": "performing",
+      "c": "performance",
+      "d": "performed",
+      "answer": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

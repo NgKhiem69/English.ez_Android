@@ -1,6 +1,7 @@
 package ck1.nguyengiakhiem.englishez_65131478;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.widget.Button;
@@ -12,16 +13,21 @@ import androidx.cardview.widget.CardView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 
 public class QuizActivity extends AppCompatActivity {
 
     // UI
-    TextView tvTimer, tvQuestionNumber, tvQuestion;
+    TextView tvTimer, tvQuestionNumber, tvQuestion, tvDifficulty;
     TextView tvA, tvB, tvC, tvD;
     Button btnNext, btnPrev;
     CardView cardA, cardB, cardC, cardD;
 
-    // Màu sắc
+    // Settings
+    String difficulty;
+    String totalTimeString;
+
+    // Colors
     int colorSelected = android.graphics.Color.parseColor("#86FF7E");
     int colorDefault = android.graphics.Color.WHITE;
 
@@ -32,18 +38,28 @@ public class QuizActivity extends AppCompatActivity {
 
     // Timer
     CountDownTimer countDownTimer;
-    long totalTime = 75 * 60 * 1000; // 75 phút
-    long remainingTime = totalTime;
+    long totalTime;
+    long remainingTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-        // Ánh xạ
+        // ===== LOAD SETTINGS =====
+        SharedPreferences prefs = getSharedPreferences("quiz_settings", MODE_PRIVATE);
+        int timeFromSettings = prefs.getInt("time", 25);
+        difficulty = prefs.getString("difficulty", "easy");
+
+        totalTime = timeFromSettings * 60 * 1000L;
+        remainingTime = totalTime;
+        totalTimeString = String.format(Locale.getDefault(), "%02d:00", timeFromSettings);
+
+        // ===== UI =====
         tvTimer = findViewById(R.id.tv_timer);
         tvQuestionNumber = findViewById(R.id.tv_question_number);
         tvQuestion = findViewById(R.id.tv_question);
+        tvDifficulty = findViewById(R.id.tv_difficulty);
 
         tvA = findViewById(R.id.tv_a);
         tvB = findViewById(R.id.tv_b);
@@ -58,20 +74,36 @@ public class QuizActivity extends AppCompatActivity {
         cardC = findViewById(R.id.card_rb_c);
         cardD = findViewById(R.id.card_rb_d);
 
-        // Load DB
+        tvDifficulty.setText("Difficulty: " + difficulty.toUpperCase());
+
+        btnNext.setEnabled(false);
+        btnNext.setAlpha(0.5f);
+
+        // ===== LOAD QUESTIONS =====
         QuizDbHelper dbHelper = new QuizDbHelper(this);
-        questionList = dbHelper.getAllQuestions();
+        questionList = dbHelper.getQuestionsByDifficulty(difficulty);
+
+        if (questionList.isEmpty()) {
+            Toast.makeText(this, "No questions found!", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
 
         startTimer();
         loadQuestion();
 
-        // Click chọn đáp án
+        // ===== CLICK ANSWERS =====
         cardA.setOnClickListener(v -> handleSelect(1, cardA));
         cardB.setOnClickListener(v -> handleSelect(2, cardB));
         cardC.setOnClickListener(v -> handleSelect(3, cardC));
         cardD.setOnClickListener(v -> handleSelect(4, cardD));
 
         btnNext.setOnClickListener(v -> {
+            if (!userAnswers.containsKey(currentIndex)) {
+                Toast.makeText(this, "Please select an answer", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             if (currentIndex < questionList.size() - 1) {
                 currentIndex++;
                 loadQuestion();
@@ -88,19 +120,15 @@ public class QuizActivity extends AppCompatActivity {
         });
     }
 
-    // ================= CHỌN ĐÁP ÁN =================
-    private void handleSelect(int optionNumber, CardView selectedCard) {
-        Integer lastAnswer = userAnswers.get(currentIndex);
+    // ===== ANSWER SELECT =====
+    private void handleSelect(int option, CardView selectedCard) {
+        userAnswers.put(currentIndex, option);
 
-        if (lastAnswer != null && lastAnswer == optionNumber) {
-            // Nhấn lần 2 -> bỏ chọn
-            userAnswers.remove(currentIndex);
-            resetCardColors();
-        } else {
-            userAnswers.put(currentIndex, optionNumber);
-            resetCardColors();
-            selectedCard.setCardBackgroundColor(colorSelected);
-        }
+        resetCardColors();
+        selectedCard.setCardBackgroundColor(colorSelected);
+
+        btnNext.setEnabled(true);
+        btnNext.setAlpha(1f);
     }
 
     private void resetCardColors() {
@@ -110,19 +138,17 @@ public class QuizActivity extends AppCompatActivity {
         cardD.setCardBackgroundColor(colorDefault);
     }
 
-    // ================= TIMER =================
+    // ===== TIMER =====
     private void startTimer() {
         countDownTimer = new CountDownTimer(totalTime, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 remainingTime = millisUntilFinished;
-
-                int minutes = (int) (millisUntilFinished / 1000) / 60;
-                int seconds = (int) (millisUntilFinished / 1000) % 60;
-
-                tvTimer.setText(String.format("Time: %02d:%02d", minutes, seconds));
+                int min = (int) (millisUntilFinished / 1000) / 60;
+                int sec = (int) (millisUntilFinished / 1000) % 60;
+                tvTimer.setText(String.format(Locale.getDefault(),
+                        "Time: %02d:%02d", min, sec));
             }
-
 
             @Override
             public void onFinish() {
@@ -131,7 +157,7 @@ public class QuizActivity extends AppCompatActivity {
         }.start();
     }
 
-    // ================= LOAD QUESTION =================
+    // ===== LOAD QUESTION =====
     private void loadQuestion() {
         Question q = questionList.get(currentIndex);
 
@@ -147,74 +173,64 @@ public class QuizActivity extends AppCompatActivity {
 
         resetCardColors();
 
-        // Khôi phục đáp án đã chọn
         if (userAnswers.containsKey(currentIndex)) {
-            int savedOption = userAnswers.get(currentIndex);
-            if (savedOption == 1) cardA.setCardBackgroundColor(colorSelected);
-            else if (savedOption == 2) cardB.setCardBackgroundColor(colorSelected);
-            else if (savedOption == 3) cardC.setCardBackgroundColor(colorSelected);
-            else if (savedOption == 4) cardD.setCardBackgroundColor(colorSelected);
+            int opt = userAnswers.get(currentIndex);
+            if (opt == 1) cardA.setCardBackgroundColor(colorSelected);
+            else if (opt == 2) cardB.setCardBackgroundColor(colorSelected);
+            else if (opt == 3) cardC.setCardBackgroundColor(colorSelected);
+            else cardD.setCardBackgroundColor(colorSelected);
+
+            btnNext.setEnabled(true);
+            btnNext.setAlpha(1f);
+        } else {
+            btnNext.setEnabled(false);
+            btnNext.setAlpha(0.5f);
         }
 
         btnPrev.setEnabled(currentIndex != 0);
     }
 
-    // ================= FINISH QUIZ =================
+    // ===== FINISH =====
     private void finishQuiz() {
-
         if (countDownTimer != null) countDownTimer.cancel();
-
-        if (questionList == null || questionList.isEmpty()) {
-            Toast.makeText(this, "No questions found!", Toast.LENGTH_SHORT).show();
-            finish();
-            return;
-        }
 
         int score = 0;
         for (int i = 0; i < questionList.size(); i++) {
-            if (userAnswers.containsKey(i)) {
-                if (userAnswers.get(i) == questionList.get(i).getCorrectAnswer()) {
-                    score++;
-                }
+            if (userAnswers.containsKey(i)
+                    && userAnswers.get(i) == questionList.get(i).getCorrectAnswer()) {
+                score++;
             }
         }
 
-        int percent = (int) ((score * 100.0f) / questionList.size());
+        int percent = (int) ((score * 100f) / questionList.size());
 
-        // ===== TÍNH THỜI GIAN ĐÃ LÀM =====
         int usedSeconds = (int) ((totalTime - remainingTime) / 1000);
-        int usedMinutes = usedSeconds / 60;
-        int usedRemainSeconds = usedSeconds % 60;
-
-        String timeUsed = String.format(
-                "%02d:%02d",
-                usedMinutes,
-                usedRemainSeconds
-        );
+        String timeUsed = String.format(Locale.getDefault(),
+                "%02d:%02d", usedSeconds / 60, usedSeconds % 60);
 
         String date = new java.text.SimpleDateFormat(
                 "dd/MM/yyyy HH:mm",
-                java.util.Locale.getDefault()
+                Locale.getDefault()
         ).format(new java.util.Date());
 
-        // ===== LƯU HISTORY =====
         QuizDbHelper dbHelper = new QuizDbHelper(this);
         dbHelper.insertHistory(
                 score,
                 questionList.size(),
                 percent,
+                totalTimeString,
                 timeUsed,
+                difficulty,
                 date
         );
 
-        // ===== GỬI SANG RESULT =====
         Intent intent = new Intent(this, ResultActivity.class);
         intent.putExtra("score", score);
         intent.putExtra("total", questionList.size());
         intent.putExtra("percent", percent);
         intent.putExtra("time_used", timeUsed);
+        intent.putExtra("difficulty", difficulty);
         startActivity(intent);
         finish();
     }
-
 }

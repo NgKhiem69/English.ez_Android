@@ -8,16 +8,18 @@ public class Question {
     private String optionC;
     private String optionD;
     private int correctAnswer; // 1-4
+    private String difficulty;
 
     public Question() {}
 
-    public Question(String question, String a, String b, String c, String d, int correctAnswer) {
+    public Question(String question, String a, String b, String c, String d, int correctAnswer, String difficulty) {
         this.question = question;
         this.optionA = a;
         this.optionB = b;
         this.optionC = c;
         this.optionD = d;
         this.correctAnswer = correctAnswer;
+        this.difficulty = difficulty;
     }
 
     // GETTER
@@ -27,4 +29,5 @@ public class Question {
     public String getOptionC() { return optionC; }
     public String getOptionD() { return optionD; }
     public int getCorrectAnswer() { return correctAnswer; }
+    public String getDifficulty() { return difficulty; }
 }

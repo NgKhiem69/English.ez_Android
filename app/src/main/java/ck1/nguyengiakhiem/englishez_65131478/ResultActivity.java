@@ -12,6 +12,8 @@ public class ResultActivity extends AppCompatActivity {
     TextView tvTimeUsed;
     TextView tvScore, tvResult, tvStatus;
     Button btnRetry, btnHome;
+    TextView tvDifficulty;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,8 @@ public class ResultActivity extends AppCompatActivity {
         tvTimeUsed = findViewById(R.id.tv_time_used);
         btnRetry = findViewById(R.id.btn_retry);
         btnHome = findViewById(R.id.btn_home);
+        tvDifficulty = findViewById(R.id.tv_difficulty);
+
 
         int score = getIntent().getIntExtra("score", 0);
         int total = getIntent().getIntExtra("total", 0);
@@ -43,6 +47,11 @@ public class ResultActivity extends AppCompatActivity {
         } else {
             tvStatus.setText("FAILED");
             tvStatus.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
+        }
+        String difficulty = getIntent().getStringExtra("difficulty");
+
+        if (difficulty != null) {
+            tvDifficulty.setText("Difficulty: " + difficulty.toUpperCase());
         }
 
         btnRetry.setOnClickListener(v -> {

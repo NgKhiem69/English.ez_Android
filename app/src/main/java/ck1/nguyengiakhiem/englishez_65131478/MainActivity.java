@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
         CardView cardStart = findViewById(R.id.card_start);
         CardView cardHistory = findViewById(R.id.card_history);
-//        CardView cardSettings = findViewById(R.id.card_settings);
+        CardView cardSettings = findViewById(R.id.card_settings);
 //        CardView cardOut = findViewById(R.id.card_out);
 
         cardStart.setOnClickListener(v -> {
@@ -22,6 +22,10 @@ public class MainActivity extends AppCompatActivity {
 
         cardHistory.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, HistoryActivity.class));
+        });
+
+        cardSettings.setOnClickListener(v -> {
+            startActivity(new Intent(this, SettingsActivity.class));
         });
     }
 }

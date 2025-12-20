@@ -67,6 +67,16 @@
                 android:text="Time used: 12:34"
                 android:textColor="#999999"
                 android:textSize="18sp" />
+            <TextView
+                android:id="@+id/tv_difficulty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Difficulty: EASY"
+                android:textColor="#666666"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center_horizontal"/>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -102,6 +112,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:cornerRadius="15dp" />
+
     </LinearLayout>
 
 </RelativeLayout>
