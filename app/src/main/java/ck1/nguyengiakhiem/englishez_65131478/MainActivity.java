@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         CardView cardStart = findViewById(R.id.card_start);
         CardView cardHistory = findViewById(R.id.card_history);
         CardView cardSettings = findViewById(R.id.card_settings);
-//        CardView cardOut = findViewById(R.id.card_out);
+        CardView cardOut = findViewById(R.id.card_out);
 
         cardStart.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, QuizActivity.class); startActivity(intent); });
@@ -26,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
         cardSettings.setOnClickListener(v -> {
             startActivity(new Intent(this, SettingsActivity.class));
+        });
+        cardOut.setOnClickListener(v -> {
+            moveTaskToBack(true);
         });
     }
 }

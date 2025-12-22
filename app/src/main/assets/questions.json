@@ -269,6 +269,143 @@
       "d": "performed",
       "answer": 3,
       "difficulty": "medium"
+    },
+    {
+      "question": "Read the passage: \n\n\"All employees are required to submit their monthly reports by the last working day of each month. Late submissions may result in delays in salary processing.\"\n\nWhat is the main purpose of this announcement?",
+      "a": "To explain how salaries are calculated",
+      "b": "To inform employees about report deadlines",
+      "c": "To announce a change in working hours",
+      "d": "To introduce a new reporting system",
+      "answer": 2,
+      "difficulty": "hard"
+    },
+    {
+      "question": "Read the passage:\n\n\"Participants who register after July 1 will be charged an additional late fee. Confirmation emails will be sent within two business days of registration.\"\n\nAccording to the passage, when will confirmation emails be sent?",
+      "a": "Immediately after payment",
+      "b": "Within one day of registration",
+      "c": "After July 1",
+      "d": "Within two business days",
+      "answer": 4,
+      "difficulty": "hard"
+    },
+    {
+      "question": "Read the passage:\n\n\"The manager postponed the meeting to allow additional time for preparation.\"\n\nWhat does the word \"postponed\" most nearly mean?",
+      "a": "Canceled",
+      "b": "Rescheduled for a later time",
+      "c": "Shortened",
+      "d": "Moved to another location",
+      "answer": 2,
+      "difficulty": "hard"
+    },
+    {
+      "question": "Read the passage:\n\n\"This notice is to remind staff that all security badges must be displayed at all times while on company premises. Failure to comply may result in disciplinary action.\"\n\nWhy was this notice most likely written?",
+      "a": "To introduce a new security badge system",
+      "b": "To explain how to obtain a security badge",
+      "c": "To remind employees of an existing policy",
+      "d": "To announce disciplinary actions",
+      "answer": 3,
+      "difficulty": "hard"
+    },
+    {
+      "question": "Read the passage:\n\n\"This notice is to remind staff that all security badges must be displayed at all times while on company premises. Failure to comply may result in disciplinary action.\"\n\nWhy was this notice most likely written?",
+      "a": "To introduce a new security badge system",
+      "b": "To explain how to obtain a security badge",
+      "c": "To remind employees of an existing policy",
+      "d": "To announce disciplinary actions",
+      "answer": 3,
+      "difficulty": "hard"
+    },
+    {
+      "question": "The report was submitted ___ the manager had approved all revisions.",
+      "a": "until",
+      "b": "unless",
+      "c": "after",
+      "d": "while",
+      "answer": 3,
+      "difficulty": "hard"
+    },
+    {
+      "question": "The marketing campaign was considered successful, ___ it did not immediately increase sales.",
+      "a": "because",
+      "b": "although",
+      "c": "unless",
+      "d": "so",
+      "answer": 2,
+      "difficulty": "hard"
+    },
+    {
+      "question": "Applicants are required to submit all documents ___ the deadline stated in the announcement.",
+      "a": "prior to",
+      "b": "in place of",
+      "c": "in spite of",
+      "d": "in addition to",
+      "answer": 1,
+      "difficulty": "hard"
+    },
+    {
+      "question": "The new policy aims to improve efficiency by ___ unnecessary administrative procedures.",
+      "a": "eliminating",
+      "b": "eliminate",
+      "c": "eliminated",
+      "d": "elimination",
+      "answer": 1,
+      "difficulty": "hard"
+    },
+    {
+      "question": "Read the passage:\n\n\"Employees who fail to complete the mandatory training may be restricted from accessing certain company systems.\"\n\nWhat will most likely happen if employees do not complete the training?",
+      "a": "They will lose their jobs",
+      "b": "They will receive additional training",
+      "c": "Their system access may be limited",
+      "d": "Their salaries will be reduced",
+      "answer": 3,
+      "difficulty": "hard"
+    },
+    {
+      "question": "The consultant recommended that the proposal ___ revised before submission.",
+      "a": "is",
+      "b": "was",
+      "c": "be",
+      "d": "has been",
+      "answer": 3,
+      "difficulty": "hard"
+    },
+    {
+      "question": "Read the passage:\n\n\"Due to budget constraints, the project timeline has been extended by two months.\"\n\nWhy was the project schedule changed?",
+      "a": "Because of staffing issues",
+      "b": "Because of financial limitations",
+      "c": "Because of technical difficulties",
+      "d": "Because of customer requests",
+      "answer": 2,
+      "difficulty": "hard"
+    },
+    {
+      "question": "The word \"constraints\" in the passage most nearly means:",
+      "a": "advantages",
+      "b": "improvements",
+      "c": "limitations",
+      "d": "opportunities",
+      "answer": 3,
+      "difficulty": "hard"
+    },
+    {
+      "question": "Only after the audit was completed ___ the company release its annual financial statement.",
+      "a": "has",
+      "b": "had",
+      "c": "did",
+      "d": "was",
+      "answer": 3,
+      "difficulty": "hard"
+    },
+    {
+      "question": "The manager emphasized the importance of adhering strictly ___ company regulations.",
+      "a": "with",
+      "b": "by",
+      "c": "for",
+      "d": "to",
+      "answer": 4,
+      "difficulty": "hard"
     }
+
+
   ]
 }
